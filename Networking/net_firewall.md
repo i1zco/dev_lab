@@ -6,6 +6,7 @@
 
   ## interface
    just tell your self where cross the          traffic e.g  you want block your internal    devices if it was visit specific web
+   
        ( you will be use LAN adress )
 
    ## source 
