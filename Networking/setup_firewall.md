@@ -100,5 +100,10 @@ Inside the pfSense WebGUI, navigate to
   The Logic: By setting pfSense as the        Primary DNS for the client, we ensure       that every website request (e.g.,           google.com) must pass through our           resolver first. This is the foundation      for future Web Filtering and Ad-blocking.
 
 
+![finally_setup](finally_setup.png)
+
+
+<br>
+
 # Real-World Troubleshooting (What I Solved)
 Applying this in a virtual environment isn't always smooth. Here is how I handled the common "Dead Ends":
