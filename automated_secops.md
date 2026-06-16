@@ -1,0 +1,59 @@
+# Automated SecOps Pipeline: Intrusion Detection to Automated Mitigation
+
+## Project Overview
+
+This project demonstrates an end-to-end automated security operations (SecOps) pipeline designed to bridge network defense with data persistence and incident response. The pipeline automates critical security phases: detection and containment via Suricata (IDS/IPS), log analysis and alerting through Splunk Enterprise, and asynchronous execution, data filtering, and relational storage driven by n8n and PostgreSQL.
+
+
+---
+
+
+## Core System Dependencies
+
+The environment relies on the following core components to process and handle network traffic:
+
+* **Suricata:** Deployed as an Intrusion Detection and Prevention System (IDS/IPS) to inspect packet payloads.
+* **NFQUEUE (Netfilter Queue):** Used to bind Linux iptables rules directly to Suricata for inline traffic processing on the same host.
+* **Splunk Enterprise:** Configured as a central SIEM platform for log ingestion, behavior analysis, and automated webhook alerting.
+* **n8n:** Utilized as the SOAR orchestration engine to parse alerts and manage downstream actions.
+* **PostgreSQL:** Serves as the relational database backend for persisting threat intelligence indicators.
+
+## Phase 1: Traffic Redirection & Intrusion Prevention (Suricata)
+
+To enable inline inspection on the host machine, network traffic is intercepted at the kernel level via `iptables` and routed to a specific Netfilter Queue (`NFQUEUE`). Suricata listens to this queue to detect and optionally drop malicious traffic.
+
+Execute the following commands to configure the packet redirection rules:
+
+```bash
+# Redirect inbound, outbound, and forwarded traffic to NFQUEUE 0
+sudo iptables -A INPUT -j NFQUEUE --queue-num 0 --queue-bypass
+sudo iptables -A OUTPUT -j NFQUEUE --queue-num 0 --queue-bypass
+sudo iptables -A FORWARD -j NFQUEUE --queue-num 0 --queue-bypass
+
+```
+
+Once the firewall rules are applied, initiate the Suricata engine to process the queue in inline mode:
+
+``` sudo suricata -q 0 ```
+
+
+
+## Phase 2: Log Aggregation & Real-Time Alerting (Splunk Enterprise)
+
+Once Suricata processes the network traffic and generates security logs, Splunk Enterprise ingests these logs to analyze malicious behavior and trigger immediate alerts.
+
+1. **Real-Time Search:** A custom search query is configured to continuously monitor the inbound traffic logs in real-time, ensuring zero latency between detection and notification.
+2. **Instant Webhook Trigger:** The alert type is set explicitly to **Real-Time** (triggered per-result). The moment an anomalous log matches the criteria, Splunk fires an asynchronous Webhook payload containing the attacker metadata to the n8n orchestration engine.
+
+### Real-Time Search Query (SPL)
+```splunk
+
+index="summary"
+ | stats count as ip_count by src_ip
+ | eval ip_risk=if(ip_count>5, "High", "Low")"
+
+```
+
+Save As Alert and fill the Form but using webhook in the end and set url example:
+
+```http://localhost:5678/webhook/fc488ee4...```
