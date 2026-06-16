@@ -40,7 +40,13 @@ Once the firewall rules are applied, initiate the Suricata engine to process the
 
 ## Phase 2: Log Aggregation & Real-Time Alerting (Splunk Enterprise)
 
-Once Suricata processes the network traffic and generates security logs, Splunk Enterprise ingests these logs to analyze malicious behavior and trigger immediate alerts.
+Once Suricata processes the network traffic and generates security logs
+
+```/usr/local/var/logs/suricata/eve.json```
+
+
+
+Add it in Splunk Enterprise ingests these logs to analyze malicious behavior and trigger immediate alerts.
 
 1. **Real-Time Search:** A custom search query is configured to continuously monitor the inbound traffic logs in real-time, ensuring zero latency between detection and notification.
 2. **Instant Webhook Trigger:** The alert type is set explicitly to **Real-Time** (triggered per-result). The moment an anomalous log matches the criteria, Splunk fires an asynchronous Webhook payload containing the attacker metadata to the n8n orchestration engine.
