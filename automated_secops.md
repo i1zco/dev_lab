@@ -57,3 +57,7 @@ index="summary"
 Save As Alert and fill the Form but using webhook in the end and set url example:
 
 ```http://localhost:5678/webhook/fc488ee4...```
+
+
+![example_form](n8n.png)
+
