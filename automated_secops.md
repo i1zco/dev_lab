@@ -42,7 +42,9 @@ Once the firewall rules are applied, initiate the Suricata engine to process the
 
 n8n is a tool that helps you connect your favorite apps and automate everyday tasks so you don't have to do them manually. Think of it like Lego blocks for software: you just drag and drop different "nodes" (like Gmail, Slack, or a database) onto a screen and link them together to pass information automatically.
 
-**to install and start** ```
+**to install and start** 
+
+```
     sudo npm install -g n8n --unsafe-perm && n8n start
     
 ```
@@ -52,7 +54,7 @@ n8n is a tool that helps you connect your favorite apps and automate everyday ta
 
 
 
-## Phase 2: Log Aggregation & Real-Time Alerting (Splunk Enterprise)
+## Phase 3: Log Aggregation & Real-Time Alerting (Splunk Enterprise)
 
 Once Suricata processes the network traffic and generates security logs
 
