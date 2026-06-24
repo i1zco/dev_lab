@@ -18,6 +18,34 @@ The environment relies on the following core components to process and handle ne
 * **n8n:** Utilized as the SOAR orchestration engine to parse alerts and manage downstream actions.
 * **PostgreSQL:** Serves as the relational database backend for persisting threat intelligence indicators.
 
+
+
+## Architecture
+
+```mermaid
+flowchart LR
+
+A[Network Traffic]
+--> B[iptables NFQUEUE]
+
+B --> C[Suricata IPS]
+
+C -->|drop event| D[eve.json]
+
+D --> E[Splunk]
+
+E --> F{Count > 3<br/>within 1 minute?}
+
+F -->|Yes| G[n8n Webhook]
+
+G --> H[(PostgreSQL)]
+
+H --> I[Store Alert]
+
+F -->|No| J[Ignore]
+```
+
+
 ## Phase 1: Traffic Redirection & Intrusion Prevention (Suricata)
 
 To enable inline inspection on the host machine, network traffic is intercepted at the kernel level via `iptables` and routed to a specific Netfilter Queue (`NFQUEUE`). Suricata listens to this queue to detect and optionally drop malicious traffic.
