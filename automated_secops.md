@@ -124,7 +124,11 @@ Upon receiving the webhook payload, the n8n workflow extracts the attacker's met
 
 To eliminate logging redundancy and prevent database bloat during continuous scanning or brute-force events, the `ip_address` column in the schema is strictly constrained with a **`UNIQUE`** key. This ensures that only unique attackers are recorded, while updating the hit counter or timestamp dynamically.
 
+![example_form](n8n4.png)
+
 
 * **Incident Response Extensibility:** Beyond data persistence, the orchestration engine is architected to scale for active mitigation, allowing it to:
   * Broadcast real-time security alerts via SMTP (Gmail) or Slack webhooks.
   * Execute remote security policies (e.g., automating a secondary firewall block via SSH or custom mitigation scripts).
+
+
