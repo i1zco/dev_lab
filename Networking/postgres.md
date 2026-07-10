@@ -86,6 +86,7 @@ These values can be customized according to your environment.
 
 ### Screenshot 
 
+![create_cert](genrate_crt.png)
 
 ---
 
