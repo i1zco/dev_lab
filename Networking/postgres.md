@@ -133,9 +133,9 @@ Expected output:
  on
 ```
 
-### Screenshot 5
+### Screenshot 3
 
-Capture the output showing that SSL is enabled.
+![check_ssl](check_ssl.png)
 
 ---
 
