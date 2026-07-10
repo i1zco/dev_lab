@@ -67,12 +67,6 @@ Use OpenSSL to generate a private key.
 openssl genrsa -out server.key 2048
 ```
 
-### Screenshot 1
-
-Capture the terminal after executing the command and show that the file **server.key** has been successfully created.
-
----
-
 ## Step 2 – Generate the SSL Certificate
 
 Generate a self-signed SSL certificate.
@@ -90,26 +84,11 @@ OpenSSL will ask for basic certificate information such as:
 
 These values can be customized according to your environment.
 
-### Screenshot 2
+### Screenshot 
 
-Capture the terminal after the certificate has been generated successfully.
-
----
-
-## Step 3 – Copy the Certificate Files
-
-Move the following files into PostgreSQL's data directory.
-
-```
-server.crt
-server.key
-```
-
-### Screenshot 3
-
-Capture the PostgreSQL data directory showing both files.
 
 ---
+
 
 ## Step 4 – Enable SSL
 
@@ -131,9 +110,9 @@ ssl_key_file = 'server.key'
 
 Restart the PostgreSQL service after saving the configuration.
 
-### Screenshot 4
+### Screenshot 2
 
-!(check_out)[]
+![Generate Private Key](ssl_postg.png)
 
 ---
 
