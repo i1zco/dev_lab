@@ -38,11 +38,17 @@ openssl req -new -x509 -key server.key -out server.crt -days 365
 
 Then configure:
 
+
 ```conf
 ssl = on
 ssl_cert_file = 'server.crt'
 ssl_key_file = 'server.key'
 ```
+
+![ssl_config](ssl_postg.png)
+
+
+
 
 Restart PostgreSQL and verify again.
 
