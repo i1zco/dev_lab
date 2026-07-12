@@ -40,7 +40,7 @@ We will go to the Network Adapters option. You will see a bar at the top with la
 ```Again, because we are in a virtual environment, we will choose Internal Network This card will connect to our Windows computer so that we can control the packets entering and leaving it.```
 
 
-![pfSense](image.png)
+![pfSense](images/image.png)
 
 
 ---
