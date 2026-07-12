@@ -48,7 +48,7 @@ Restart PostgreSQL and verify again.
 
 
 
-![pstgres_screen]()
+![pstgres_screen](check_ssl.png)
 
 ---
 
