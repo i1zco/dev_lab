@@ -191,7 +191,17 @@ This makes it easier to investigate suspicious activities and detect unauthorize
 
 ## Install pgAudit
 
+
+```
+sudo pacman -S postgresql-pgaudit
+```
+
+```
+sudo apt install postgresql-15-pgaudit
+```
+
 Enable the extension in PostgreSQL:
+
 
 ```conf
 shared_preload_libraries = 'pgaudit'
