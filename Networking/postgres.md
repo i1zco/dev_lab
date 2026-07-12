@@ -45,7 +45,7 @@ ssl_cert_file = 'server.crt'
 ssl_key_file = 'server.key'
 ```
 
-![ssl_config](ssl_postg.png)
+![ssl_config](images/ssl_postg.png)
 
 
 
@@ -54,7 +54,7 @@ Restart PostgreSQL and verify again.
 
 
 
-![pstgres_screen](check_ssl.png)
+![pstgres_screen](images/check_ssl.png)
 
 ---
 
