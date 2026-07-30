@@ -51,3 +51,48 @@ Router(#config) ip route 192.168.2.0 255.255.255.0 10.0.2.1
 
 ```
 
+
+
+
+### Dynamic Routing (OSPF)
+
+it specifies the IP subnet or network ranges connected to the router so that other routers can learn how to reach them.
+
+Enabling the OSPF protocol and advertising the local LAN networks:
+
+#### Router A
+
+```cisco
+RouterA> enable
+RouterA# configure terminal
+RouterA(config)# router ospf 1
+RouterA(config-router)# network 192.168.1.0 0.0.0.255 area 0
+RouterA(config-router)# network 10.0.1.0 0.0.0.3 area 0
+```
+
+#### Router B
+
+```
+RouterB> enable
+RouterB# configure terminal
+RouterB(config)# router ospf 1
+RouterB(config-router)# network 192.168.2.0 0.0.0.255 area 0
+RouterB(config-router)# network 10.0.1.0 0.0.0.3 area 0
+RouterB(config-router)# network 10.0.2.0 0.0.0.3 area 0
+
+```
+
+#### Router C
+
+```
+RouterC> enable
+RouterC# configure terminal
+RouterC(config)# router ospf 1
+RouterC(config-router)# network 192.168.3.0 0.0.0.255 area 0
+RouterC(config-router)# network 10.0.2.0 0.0.0.3 area 0
+
+```
+
+
+
+
