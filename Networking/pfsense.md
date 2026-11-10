@@ -32,7 +32,7 @@ The client is using the router instead of pfSense as both the default gateway an
 
 
 
-![image](image.png)
+![image](images/image.png)
 
 
 
